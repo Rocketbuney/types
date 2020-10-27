@@ -20,3 +20,6 @@ add_executable(
   test/main.cpp
 )
 target_link_libraries(unit_test LINK_PUBLIC types gtest_main)
+
+enable_testing()
+add_test(NAME UnitTest COMMAND ./unit_test)
