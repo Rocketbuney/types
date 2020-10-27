@@ -31,6 +31,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    
+    - name: Get google test
+      run: git submodule update --init --recursive 
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
