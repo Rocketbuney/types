@@ -2,16 +2,14 @@
 
 
 /* initializes the list O(N) */
-template <typename T>
-linear_list<T>::linear_list() {
+linear_list::linear_list() {
   this->head = NULL;
   this->length = 0;
 }
 
 
 /* clears all dynamic memory O(N) */
-template <typename T>
-linear_list<T>::~linear_list() {
+linear_list::~linear_list() {
   while (this->head) {
     node *temp = this->head;
     this->head = head->next;
@@ -23,8 +21,7 @@ linear_list<T>::~linear_list() {
 
 
 /* adds an item to the list O(1) */
-template <typename T>
-bool linear_list<T>::add_item(const T &to_add) {
+bool linear_list::add_item(const int &to_add) {
   node *temp = this->head;
 
   this->head = new node;
@@ -42,8 +39,7 @@ bool linear_list<T>::add_item(const T &to_add) {
 
 
 /* remove item from the lsit, inefficent O(N) */
-template <typename T>
-bool linear_list<T>::remove_item(const T &to_remove) {
+bool linear_list::remove_item(const int &to_remove) {
   node *current = this->head, *previous = this->head;
   while (current) {
     if (current->data == to_remove) {
@@ -64,11 +60,9 @@ bool linear_list<T>::remove_item(const T &to_remove) {
 
 
 /* iterate through the list O(N) */
-template <typename T>
-void linear_list<T>::iterate(void *(*callback)(T)) {
+void linear_list::iterate(void *(*callback)(int)) {
   node *current = this->head;
   while (current) {
     callback(current->data);
   }
 }
-

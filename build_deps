@@ -1,4 +1,0 @@
-cd deps/googletest/
-cmake -DBUILD_SHARED_LIBS=ON .
-make
-cd ../../
