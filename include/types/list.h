@@ -7,13 +7,14 @@
 template <typename T>
 class linear_list {
   public:
+    linear_list();
     ~linear_list();
 
     bool add_item(const T &to_add); /* add item to the list */
     bool remove_item(const T &to_remove); /* remove item */
     void iterate(void *(*callback)(T)); /* iterate through all */
     
-    inline size_t size() const { return this->size; }; /* get size */
+    inline size_t size(void) const { return this->size; }; /* get size */
 
   private:
     /* each node in the list */
@@ -22,8 +23,8 @@ class linear_list {
       T data;
     };
 
-    node *head = NULL; /* start of list */
-    size_t length = NULL; /* list length */
+    node *head; /* start of list */
+    size_t length; /* list length */
 };
 
 #endif

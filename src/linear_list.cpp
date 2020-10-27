@@ -1,6 +1,14 @@
 #include <types/types.h>
 
 
+/* initializes the list O(N) */
+template <typename T>
+linear_list<T>::linear_list() {
+  this->head = NULL;
+  this->length = 0;
+}
+
+
 /* clears all dynamic memory O(N) */
 template <typename T>
 linear_list<T>::~linear_list() {
