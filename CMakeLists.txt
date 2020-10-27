@@ -9,9 +9,14 @@ add_library(
   include/types/list.h
 )
 
+# Add googletest directly to our build. This defines
+# the gtest and gtest_main targets.
+add_subdirectory(deps/googletest/
+                 EXCLUDE_FROM_ALL)
+
 include_directories(include)
 add_executable(
   unit_test
   test/main.cpp
 )
-target_link_libraries(unit_test LINK_PUBLIC types)
+target_link_libraries(unit_test LINK_PUBLIC types gtest_main)
