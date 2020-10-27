@@ -11,11 +11,10 @@ This repo holds common data structures I end up using, for my computer science c
 
 ## Building
 ```
-git clone https://github.com/Rocketbuney/types.git
-cd types
+git clone https://github.com/Rocketbuney/types.git && cd types
 git submodule update --init --recursive
-./build_deps
-make
+mkdir build && cd build
+cmake ../ && make
 ```
 
 ## Usage
