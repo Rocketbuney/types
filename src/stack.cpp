@@ -20,14 +20,30 @@ types::stack::~stack() {
 }
 
 bool types::stack::push(const int &to_add) {
+  if (this->top >= stack_length || !this->data)
+    return false;
+  
+  this->data[this->top] = to_add;
+  ++this->top;
+
   return true;
 }
 
 bool types::stack::pop() {
+  if (!this->data || this->top == 0)
+    return false;
+  
+  this->data[this->top - 1] = NULL;
+  --this->top;
+
   return true;
 }
 
 bool types::stack::peak(int &result) {
+  if (!this->data || this->top == 0)
+    return false;
+  
+  result = this->data[this->top - 1];
   return true;
 }
 
