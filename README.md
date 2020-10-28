@@ -1,6 +1,7 @@
 # types
 
 ![CodeQL](https://github.com/Rocketbuney/types/workflows/CodeQL/badge.svg)
+![CMake](https://github.com/Rocketbuney/types/workflows/CMake/badge.svg)
 <a href="https://gitmoji.carloscuesta.me">
 		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
 			 alt="Gitmoji">
