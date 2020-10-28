@@ -1,3 +1,10 @@
+/*
+ * @Author: Jack Thake 
+ * @Date: 2020-10-27 15:39:59 
+ * @Last Modified by: Jack Thake
+ * @Last Modified time: 2020-10-28 09:52:09
+*/
+
 #include <types/types.h>
 #include <gtest/gtest.h>
 
@@ -50,11 +57,12 @@ namespace {
     EXPECT_FALSE(stack.pop());
   }
 
-  TEST(stack, popk_from_populated_stack) {
+  TEST(stack, pop_from_populated_stack) {
     types::stack stack(1);
 
     stack.push(1);
     EXPECT_EQ(stack.isempty(), false);
     EXPECT_TRUE(stack.pop());
+    EXPECT_EQ(stack.isempty(), true);
   }
 };
