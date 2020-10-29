@@ -5,8 +5,10 @@ include_directories(include)
 add_library(
   types
   src/stack.cpp
+  src/linear_list.cpp
   include/types/types.h
   include/types/stack.h
+  include/types/list.h
 )
 
 # Add googletest directly to our build. This defines
