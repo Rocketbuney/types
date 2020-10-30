@@ -2,7 +2,7 @@
  * @Author: Jack Thake 
  * @Date: 2020-10-29 14:22:55 
  * @Last Modified by: Jack Thake
- * @Last Modified time: 2020-10-29 14:36:14
+ * @Last Modified time: 2020-10-29 17:06:04
 */
 
 #include <types/types.h>
@@ -46,15 +46,47 @@ namespace types {
 
   /* push to the rear of the list */
   bool linear_list::push_back(const int &to_push) {
-    /* TODO: Implement me! */
+    node *current = this->head;
+
+    while (current->next) /* traverse to the last item */
+      current = current->next;
+    
+    /* attempt to allocate a new node */
+    current->next = new node;
+    if (!current->next) { /* if allocation failed, revert */
+      current->next = NULL;
+      return false;
+    }
+    
+    /* copy over data */
+    current->next->data = to_push;
+    current->next->next = NULL;
+
     return true;
   }
 
 
   /* remove all matching items */
   bool linear_list::remove_item(const int &to_remove) {
-    /* TODO: Implement me! */
-    return true;
+    node *current = this->head, *previous = NULL;
+    bool has_removed = false;
+
+    while (current) { /* loop through list, checking if we should remove */
+      if (current->data == to_remove) {
+        has_removed = true;
+        previous->next = current->next;
+        delete current;
+      }
+
+      /* advance to next iteration */
+      previous = current;
+      current = current->next;
+    }
+
+    if (has_removed)
+      return true;
+    
+    return false;
   }
 
 
