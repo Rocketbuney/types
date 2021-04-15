@@ -1,35 +1,60 @@
-/*
- * @Author: Jack Thake 
- * @Date: 2020-10-29 14:13:47 
- * @Last Modified by: Jack Thake
- * @Last Modified time: 2020-10-29 14:32:02
-*/
+/* LIST.h
+ *   by Jack Thake
+ *
+ * Created:
+ *   4/7/2021, 5:34:29 PM
+ * Last edited:
+ *   4/15/2021, 12:20:06 PM
+ * Auto updated?
+ *   Yes
+ *
+ * Description:
+ *   Declaration for linear list class
+**/
 
 #ifndef __LIST_H__
 #define __LIST_H__
 
+#include <iterator>
+
 namespace types {
   class linear_list {
+    struct node; // forward declaration
   public:
+    class iterator; // forward declaration
     linear_list();
     ~linear_list();
 
-    bool push_front(const int &to_push); /* adds one item to front of list */
-    bool push_back(const int &to_push); /* adds one item to front of list */
+    bool push_front(void *);
+    bool push_back(void *);
+
+    bool clear(void);
+    inline bool is_empty(void) { return !this->head; };
     
-    bool remove_item(const int &to_remove); /* removes a given item */
+    iterator begin();
+    iterator end();
     
-    void clear(void); /* clear list */
-    bool unique(void); /* remove duplicates */
-    inline bool is_empty(void) const { return !this->head; }; /* returns if the list is empty */
+    class iterator {
+    public:
+      iterator();
+      iterator(const node *);
+      
+      iterator &operator=(const node *);
+      iterator &operator++(); /* prefix */
+      iterator &operator++(int); /* postfix */
+      bool operator!=(const iterator &);
+      void *operator*();
+    private:
+      const node *current_node;
+    };
   private:
     struct node {
-      int data;
+      void *data;
       node *next;
     };
     
     node *head;
-  };  
+  };
 } // namespace types
 
 
