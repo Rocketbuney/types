@@ -15,9 +15,8 @@
 #ifndef __LIST_H__
 #define __LIST_H__
 
-#include <iterator>
-
 namespace types {
+  /* holds one linear list, all connections are one way. */
   class linear_list {
     struct node; // forward declaration
   public:
@@ -27,9 +26,13 @@ namespace types {
 
     bool push_front(void *);
     bool push_back(void *);
+    
+    bool remove(void *, bool (*compfn)(const void *, const void *)); /* removes  */
+    bool unique(); /* remove all duplicates */
 
     bool clear(void);
-    inline bool is_empty(void) { return !this->head; };
+    inline unsigned size(void) const { return this->len; }
+    inline bool is_empty(void) const { return !this->head; };
     
     iterator begin();
     iterator end();
@@ -53,6 +56,9 @@ namespace types {
       node *next;
     };
     
+    int remove_recurs(node * &current, void *, bool (*compfn)(const void *, const void *));
+    
+    unsigned len;
     node *head;
   };
 } // namespace types

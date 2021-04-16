@@ -67,6 +67,33 @@ bool linear_list::push_back(void *to_add) {
 }
 
 
+/* remove matching list items recursively using c++ pass by reference */
+int linear_list::remove_recurs(node * &current, void *comp, bool (*compfn)(const void *, const void *)) {
+  if (!current) return 0;
+  
+  if (compfn(current->data, comp)) {
+    current = current->next;
+    
+    return 1 + remove_recurs(current, comp, compfn);
+  } else {
+    return remove_recurs(current->next, comp, compfn);
+  }
+}
+
+
+/* remove all matching entries, if the compfn returns true - delete. */
+/* recursive wrapper function */
+bool linear_list::remove(void *comp, bool (*compfn)(const void *, const void *)) {
+  return remove_recurs(this->head, comp, compfn);
+}
+
+
+/* only keep unique data */
+bool linear_list::unique() {
+  return true;
+}
+
+
 /* clear list */
 bool linear_list::clear(void) {
   if (!head) /* if no list exists, fail */
